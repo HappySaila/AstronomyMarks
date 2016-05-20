@@ -49,6 +49,8 @@ public class AstronomyDatabase{
 		}
 		return student;
 	}
-
-
+	
+	public void PrintTree(StudentNode root){
+		
+	}
 }
