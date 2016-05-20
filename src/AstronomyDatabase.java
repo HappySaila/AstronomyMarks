@@ -7,6 +7,8 @@ import java.io.IOException;
 public class AstronomyDatabase{
 
 	public AstronomyDatabase(String fileName){
+		//creates tree with data being student marks
+		//creates hashTable to get a students data
 		Generate(fileName);
 	}
 
@@ -17,10 +19,10 @@ public class AstronomyDatabase{
 			br = new BufferedReader(new FileReader(fileName));
 			String line = br.readLine();
 			while (line != null) {
-				line = br.readLine();
 				//create a student
-				CreateRecord(line);
-				//add student into the tree
+				Student student = CreateRecord(line);
+				line = br.readLine();
+				//add student into the tree based on there mark
 			}
 		}
 		catch(FileNotFoundException e){
@@ -32,14 +34,17 @@ public class AstronomyDatabase{
 		}
 	}
 
-	public void CreateRecord(String line){
+	public Student CreateRecord(String line){
 		String[] record = line.split("\\s+");
 		String[] names = record[2].split(",");
-		System.out.println(names[0]+" "+names[1]);
+		Student student;
 		if (record[3].equals("DP")){
-			Student student = new Student(record[0], record[1], names[0], names[1], true, Integer.parseInt(record[4]));
+			student = new Student(record[0], record[1], names[0], names[1], true, Integer.parseInt(record[4]));
 		}
-		//return student;
+		else{
+			student = new Student(record[0], record[1], names[0], names[1], false, Integer.parseInt(record[4]));
+		}
+		return student;
 	}
 
 
