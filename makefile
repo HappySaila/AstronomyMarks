@@ -16,7 +16,7 @@ vpath %.class $(BINDIR)
 	$(JAVAC)  $(JFLAGS)  $<
 
 #default rule - will be invoked by make
-all: Student.class Database.class AstronomyDatabase.class\
+all: Student.class Database.class StudentNode.class AstronomyTree.class AstronomyDatabase.class\
 	Interface.class\
 
 clean:

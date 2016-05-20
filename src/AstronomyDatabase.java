@@ -14,6 +14,7 @@ public class AstronomyDatabase{
 
 	public void Generate(String fileName){
 		//will read every line int he file and will generate an array of student objects
+		AstronomyTree astTree = new AstronomyTree();
 		BufferedReader br;
 		try{
 			br = new BufferedReader(new FileReader(fileName));
@@ -21,8 +22,10 @@ public class AstronomyDatabase{
 			while (line != null) {
 				//create a student
 				Student student = CreateRecord(line);
+				StudentNode studentNode = new StudentNode(student);
 				line = br.readLine();
 				//add student into the tree based on there mark
+				astTree.AddNode(studentNode, astTree.getRoot());
 			}
 		}
 		catch(FileNotFoundException e){
